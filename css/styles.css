@@ -11407,3 +11407,17 @@ section#contact form#contactForm :-ms-input-placeholder {
     cursor: pointer !important;
     padding: 0 !important;
 }
+collection-modal .carousel-item img {
+    width: 70% !important;    /* Занимает 70% ширины контейнера */
+    max-height: 60vh !important; /* Ограничение по высоте, чтобы не улетала вниз */
+    margin: 0 auto !important;  /* Центрируем */
+    display: block !important;
+    object-fit: contain !important;
+}
+
+/* На мобильных устройствах лучше оставить 100%, чтобы не было слишком мелко */
+@media (max-width: 768px) {
+    .collection-modal .carousel-item img {
+        width: 100% !important;
+    }
+}
