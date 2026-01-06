@@ -11393,106 +11393,80 @@ section#contact form#contactForm :-ms-input-placeholder {
     background-color: #b58d4f; /* Золотистый цвет для активной */
     opacity: 1; /* Полная видимость для текущего слайда */
 }
-/* ПРИНУДИТЕЛЬНОЕ ОГРАЗЫВАНИЕ ВЫСОТЫ МОДАЛКИ */
+/* ФИНАЛЬНОЕ РЕШЕНИЕ: УБИРАЕМ ПУСТОТУ И ФИКСИРУЕМ ВЫСОТУ */
 
-/* 1. Ограничиваем всё содержимое модального окна */
-.collection-modal .modal-content {
-    max-height: 95vh !important; /* Модалка не может быть выше 95% экрана */
-    overflow-y: auto !important; /* Если текст не влез, появится внутренний скролл */
+/* 1. Кнопка закрытия: вырываем её из потока, чтобы она не занимала место сверху */
+.close-modal {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    width: 30px !important;
+    height: 30px !important;
+    z-index: 9999;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-/* 2. Самое главное: ограничиваем картинку через вложенность Agency */
-div[id^="collectionModal"] .modal-body img.img-fluid {
-    max-height: 60vh !important; /* Картинка займет только 60% высоты */
-    width: auto !important;      /* Запрещаем растягиваться по ширине */
-    margin: 0 auto !important;   /* Центрируем */
-    object-fit: contain !important;
+.close-modal img {
+    width: 100% !important;
+    height: auto !important;
+    opacity: 0.7;
+    transition: opacity 0.3s;
 }
 
-/* 3. Центрируем элементы карусели по вертикали */
-.carousel-inner {
-    max-height: 60vh !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background-color: #f8f9fa; /* Светлый фон для пустых мест по бокам */
+.close-modal:hover img {
+    opacity: 1;
 }
 
-/* 4. Делаем заголовок и текст компактнее для 1080p */
-.collection-modal h2 {
-    font-size: 1.5rem !important;
-    margin-bottom: 0.5rem !important;
-}
-
-.collection-modal .item-intro {
-    margin-bottom: 1rem !important;
-}
-/* Убираем гигантские отступы в модальном окне */
+/* 2. Убираем гигантские отступы самой модалки */
+.portfolio-modal .modal-body,
 .collection-modal .modal-body {
-    padding-top: 1rem !important; /* Уменьшаем верхний отступ (был около 8rem) */
+    padding-top: 5px !important; /* Почти вплотную к верху */
     padding-bottom: 0 !important;
 }
 
-/* Сдвигаем заголовок еще выше */
-.collection-modal h2 {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-}
-
-/* Уменьшаем отступы вокруг карусели */
-.carousel-controls-top {
-    margin-bottom: 0.5rem !important; /* Прижимаем кнопки управления ближе к картинке */
-}
-
-/* Поднимаем кнопку закрытия (крестик), чтобы она не выталкивала контент */
-.collection-modal .close-modal {
-    top: 1.5rem !important;
-    right: 1.5rem !important;
-}
-
-/* Если контейнер .container внутри модалки имеет свои отступы — убираем */
-.collection-modal .container {
-    padding-top: 0 !important;
-}
-/* 1. Убираем гигантский отступ вверху модального окна */
-.portfolio-modal .modal-body {
-    padding-top: 20px !important; /* Вместо стандартных 100-150px */
-}
-
-/* 2. Делаем крестик закрытия маленьким и переносим в самый угол */
-.portfolio-modal .close-modal {
-    width: 30px !important;
-    height: 30px !important;
-    top: 10px !important;
-    right: 10px !important;
-    background-color: transparent !important; /* Убираем фон, если он был */
-}
-
-/* 3. Заменяем огромную картинку крестика на простой текстовый символ "×" */
-.portfolio-modal .close-modal .lr, 
-.portfolio-modal .close-modal .rl {
-    display: none !important; /* Скрываем стандартные палки Agency */
-}
-
-.portfolio-modal .close-modal::before {
-    content: "×"; /* Символ умножения (крестик) */
-    font-size: 40px;
-    line-height: 30px;
-    color: #b58d4f; /* Ваш золотистый цвет */
-    font-weight: 300;
-    display: block;
-    text-align: center;
-}
-
-/* 4. Прижимаем заголовок максимально вверх */
+/* 3. Поднимаем заголовок (Название картины) максимально вверх */
+.portfolio-modal h2, 
+.collection-modal h2,
 .portfolio-modal h2.text-uppercase {
     margin-top: 0 !important;
     padding-top: 0 !important;
-    margin-bottom: 10px !important;
-    font-size: 1.8rem !important; /* Чуть уменьшим, чтобы текст внизу "всплыл" */
+    margin-bottom: 5px !important;
+    font-size: 1.7rem !important; /* Компактный размер */
 }
 
-/* 5. Убираем лишние отступы у контейнера */
-.portfolio-modal .container {
+/* 4. Убираем лишние отступы у контейнера и строк */
+.portfolio-modal .container,
+.collection-modal .container {
     padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* 5. Ограничиваем высоту карусели и картинок */
+/* Чтобы на 1080p текст снизу "выплыл", картинка должна быть не выше 55-60% экрана */
+.carousel-inner,
+div[id^="collectionModal"] .modal-body img.img-fluid,
+.collection-modal .carousel-item img {
+    max-height: 58vh !important; /* Оптимально для 1920x1080 */
+    width: auto !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+}
+
+/* Центрируем картинку, если она узкая */
+.carousel-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: transparent !important;
+}
+
+/* 6. Описание под картинкой: делаем компактнее */
+.item-intro {
+    margin-bottom: 5px !important;
+    font-size: 0.9rem !important;
+}
+
+.modal-body p {
+    margin-bottom: 10px !important;
 }
