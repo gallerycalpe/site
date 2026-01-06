@@ -11393,35 +11393,37 @@ section#contact form#contactForm :-ms-input-placeholder {
     background-color: #b58d4f; /* Золотистый цвет для активной */
     opacity: 1; /* Полная видимость для текущего слайда */
 }
-/* Специальное правило для картинки внутри модального окна карусели */
-.modal-body .carousel-item img {
-    /* Ограничиваем высоту до 65% от высоты экрана (65vh) */
-    max-height: 65vh !important;
-    
-    /* Отключаем принудительную ширину 100%, чтобы сохранить пропорции */
-    width: auto !important;
-    
-    /* Гарантируем, что картинка не вылезет за границы по ширине на мобильных */
-    max-width: 100% !important;
-    
-    /* Центрируем картинку */
-    display: block !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    
-    /* Улучшаем отображение */
+/* ПРИНУДИТЕЛЬНОЕ ОГРАЗЫВАНИЕ ВЫСОТЫ МОДАЛКИ */
+
+/* 1. Ограничиваем всё содержимое модального окна */
+.collection-modal .modal-content {
+    max-height: 95vh !important; /* Модалка не может быть выше 95% экрана */
+    overflow-y: auto !important; /* Если текст не влез, появится внутренний скролл */
+}
+
+/* 2. Самое главное: ограничиваем картинку через вложенность Agency */
+div[id^="collectionModal"] .modal-body img.img-fluid {
+    max-height: 60vh !important; /* Картинка займет только 60% высоты */
+    width: auto !important;      /* Запрещаем растягиваться по ширине */
+    margin: 0 auto !important;   /* Центрируем */
     object-fit: contain !important;
 }
 
-/* Уменьшаем отступы в модальном окне, чтобы выигрывать место для текста */
-.portfolio-modal .modal-body {
-    padding-top: 1.5rem !important;
-    padding-bottom: 1.5rem !important;
-}
-
-/* Настраиваем контейнер карусели, чтобы он не схлопывался */
+/* 3. Центрируем элементы карусели по вертикали */
 .carousel-inner {
+    max-height: 60vh !important;
     display: flex !important;
     align-items: center !important;
-    min-height: 200px; /* Чтобы пустая карусель не прыгала */
+    justify-content: center !important;
+    background-color: #f8f9fa; /* Светлый фон для пустых мест по бокам */
+}
+
+/* 4. Делаем заголовок и текст компактнее для 1080p */
+.collection-modal h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.collection-modal .item-intro {
+    margin-bottom: 1rem !important;
 }
