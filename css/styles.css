@@ -11035,8 +11035,8 @@ header.masthead .masthead-heading {
   max-width: 100vw;
 }
 .collection-modal .modal-content {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   text-align: center;
 }
 .collection-modal .modal-content h2, .collection-modal .modal-content .h2 {
@@ -11406,71 +11406,4 @@ section#contact form#contactForm :-ms-input-placeholder {
     z-index: 10000 !important;
     cursor: pointer !important;
     padding: 0 !important;
-}
-
-/* 2. Убиваем пустоту сверху в теме Agency */
-/* В этой теме у modal-body и контейнеров внутри часто стоят гигантские отступы */
-.portfolio-modal .modal-body {
-    padding-top: 0 !important; /* Обнуляем основной отступ */
-}
-
-.portfolio-modal .container {
-    padding-top: 10px !important; /* Оставляем крошечный зазор */
-}
-
-/* 3. Поднимаем заголовок */
-.portfolio-modal h2 {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    margin-bottom: 5px !important;
-}
-
-/* 4. Ограничиваем высоту карусели, чтобы влез текст снизу */
-.carousel-inner, 
-.carousel-item img {
-    max-height: 55vh !important; /* 55% высоты экрана — идеально для 1080p */
-    width: auto !important;
-    margin: 0 auto !important;
-    object-fit: contain !important;
-}
-
-/* Убираем лишние отступы у описания */
-.item-intro {
-    margin-top: 0 !important;
-    margin-bottom: 5px !important;
-}
-/* 1. Обнуляем паддинги у всех оберток внутри модалки */
-.portfolio-modal .modal-body,
-.portfolio-modal .container,
-.portfolio-modal .row,
-.portfolio-modal .col-lg-8 {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-}
-
-/* 2. Убираем специфический отступ темы Agency у заголовка */
-.portfolio-modal h2.text-uppercase {
-    padding-top: 10px !important; /* Небольшой зазор от верхнего края */
-    margin-top: 0 !important;
-    margin-bottom: 10px !important;
-    line-height: 1 !important;
-}
-
-/* 3. Делаем карусель еще компактнее, если текст всё еще не лезет */
-.carousel-inner {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-}
-
-/* 4. Убираем отступ у подзаголовка (DENIA и т.д.) */
-.item-intro {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    margin-bottom: 10px !important;
-    font-style: italic;
-}
-
-/* 5. Если над заголовком всё еще есть место, проверим этот класс */
-.modal-content {
-    padding-top: 0 !important;
 }
