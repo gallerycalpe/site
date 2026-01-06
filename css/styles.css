@@ -11454,3 +11454,45 @@ div[id^="collectionModal"] .modal-body img.img-fluid {
 .collection-modal .container {
     padding-top: 0 !important;
 }
+/* 1. Убираем гигантский отступ вверху модального окна */
+.portfolio-modal .modal-body {
+    padding-top: 20px !important; /* Вместо стандартных 100-150px */
+}
+
+/* 2. Делаем крестик закрытия маленьким и переносим в самый угол */
+.portfolio-modal .close-modal {
+    width: 30px !important;
+    height: 30px !important;
+    top: 10px !important;
+    right: 10px !important;
+    background-color: transparent !important; /* Убираем фон, если он был */
+}
+
+/* 3. Заменяем огромную картинку крестика на простой текстовый символ "×" */
+.portfolio-modal .close-modal .lr, 
+.portfolio-modal .close-modal .rl {
+    display: none !important; /* Скрываем стандартные палки Agency */
+}
+
+.portfolio-modal .close-modal::before {
+    content: "×"; /* Символ умножения (крестик) */
+    font-size: 40px;
+    line-height: 30px;
+    color: #b58d4f; /* Ваш золотистый цвет */
+    font-weight: 300;
+    display: block;
+    text-align: center;
+}
+
+/* 4. Прижимаем заголовок максимально вверх */
+.portfolio-modal h2.text-uppercase {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 10px !important;
+    font-size: 1.8rem !important; /* Чуть уменьшим, чтобы текст внизу "всплыл" */
+}
+
+/* 5. Убираем лишние отступы у контейнера */
+.portfolio-modal .container {
+    padding-top: 0 !important;
+}
