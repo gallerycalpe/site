@@ -11439,3 +11439,38 @@ section#contact form#contactForm :-ms-input-placeholder {
     margin-top: 0 !important;
     margin-bottom: 5px !important;
 }
+/* 1. Обнуляем паддинги у всех оберток внутри модалки */
+.portfolio-modal .modal-body,
+.portfolio-modal .container,
+.portfolio-modal .row,
+.portfolio-modal .col-lg-8 {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* 2. Убираем специфический отступ темы Agency у заголовка */
+.portfolio-modal h2.text-uppercase {
+    padding-top: 10px !important; /* Небольшой зазор от верхнего края */
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+    line-height: 1 !important;
+}
+
+/* 3. Делаем карусель еще компактнее, если текст всё еще не лезет */
+.carousel-inner {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* 4. Убираем отступ у подзаголовка (DENIA и т.д.) */
+.item-intro {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 10px !important;
+    font-style: italic;
+}
+
+/* 5. Если над заголовком всё еще есть место, проверим этот класс */
+.modal-content {
+    padding-top: 0 !important;
+}
