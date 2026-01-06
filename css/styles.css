@@ -5988,6 +5988,24 @@ textarea.form-control-lg {
 .carousel-dark .carousel-caption {
   color: #000;
 }
+/* Ограничение высоты картины, чтобы она влезала в экран 1080p */
+.modal-body .carousel-item img {
+    max-height: 70vh;    /* Занимает не более 70% высоты окна браузера */
+    width: auto;         /* Позволяет ширине уменьшаться пропорционально */
+    max-width: 100%;     /* Не дает картинке вылезти за бока на мобильных */
+    object-fit: contain; /* Гарантирует, что всё изображение будет в кадре */
+    display: block;
+    margin: 0 auto;      /* Центрирует картинку, если она стала уже */
+}
+
+/* Убираем лишние отступы в модальном окне для компактности */
+.collection-modal .modal-body {
+    padding-top: 1rem !important;
+}
+
+.carousel-inner {
+    background-color: transparent; /* Убеждаемся, что фон не перекрывает ничего */
+}
 
 .spinner-grow,
 .spinner-border {
