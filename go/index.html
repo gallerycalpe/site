@@ -71,4 +71,71 @@
             flex-direction: column;
             gap: 15px;
             align-items: center;
-            animation: fadeInButtons 1.5s 4.5s forwards
+            animation: fadeInButtons 1.5s 4.5s forwards;
+        }
+
+        .btn {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.7);
+            padding: 14px 30px;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-decoration: none;
+            width: 220px;
+            outline: none;
+        }
+
+        .btn:hover {
+            border-color: white;
+            color: white;
+            background: rgba(255,255,255,0.05);
+        }
+
+        @keyframes fadeInButtons {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/gallerycalpe/site/main/assets/img/logos/logo6.png" alt="Gallery Calpe" class="logo">
+        
+        <div class="phrase-container">
+            <div class="phrase">Concept & Materia</div>
+        </div>
+
+        <div class="buttons-container">
+            <a href="https://www.instagram.com/gallery_design_calpe/" class="btn">Instagram Experience</a>
+            
+            <button onclick="luckyRedirect()" class="btn">I'm Lucky</button>
+        </div>
+    </div>
+
+    <script>
+        function luckyRedirect() {
+            // Список страниц твоих проектов (добавь свои реальные ссылки)
+            const projects = [
+                'https://gallerycalpe.art/#portfolio',
+                'https://gallerycalpe.art/project1', 
+                'https://gallerycalpe.art/project2'
+            ];
+            
+            // Выбираем случайную
+            const randomProject = projects[Math.floor(Math.random() * projects.length)];
+            
+            // Плавное исчезновение перед переходом
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s';
+            
+            setTimeout(() => {
+                window.location.href = randomProject;
+            }, 500);
+        }
+    </script>
+</body>
+</html>
