@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery & Design Calpe</title>
     <style>
-        /* Общие настройки экрана */
         body {
             margin: 0;
             padding: 0;
@@ -24,7 +23,6 @@
             width: 100%;
         }
 
-        /* Логотип: мягкое появление */
         .logo {
             width: 100px;
             opacity: 0;
@@ -37,7 +35,6 @@
             to { opacity: 1; filter: blur(0); }
         }
 
-        /* Анимация стягивания букв */
         .phrase-container {
             height: 30px;
             display: flex;
@@ -51,7 +48,7 @@
             font-weight: 200;
             text-transform: uppercase;
             white-space: nowrap;
-            letter-spacing: 120px; /* Буквы раскиданы в начале */
+            letter-spacing: 120px;
             opacity: 0;
             filter: blur(20px);
             animation: genesisGather 4s 1s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
@@ -63,13 +60,12 @@
             100% { opacity: 0.8; letter-spacing: 8px; filter: blur(0); transform: scale(1); }
         }
 
-        /* Кнопки: появляются в самом конце */
         .buttons-container {
-            margin-top: 50px;
+            margin-top: 40px;
             opacity: 0;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
             animation: fadeInButtons 1.5s 4.5s forwards;
         }
@@ -78,15 +74,16 @@
             background: none;
             border: 1px solid rgba(255,255,255,0.2);
             color: rgba(255,255,255,0.7);
-            padding: 14px 30px;
+            padding: 12px 30px;
             text-transform: uppercase;
             font-size: 10px;
             letter-spacing: 2px;
             cursor: pointer;
             transition: all 0.4s;
             text-decoration: none;
-            width: 220px;
+            width: 200px;
             outline: none;
+            box-sizing: border-box;
         }
 
         .btn:hover {
@@ -110,32 +107,3 @@
         </div>
 
         <div class="buttons-container">
-            <a href="https://www.instagram.com/gallery_design_calpe/" class="btn">Instagram</a>
-            
-            <button onclick="luckyRedirect()" class="btn">FORTUNE</button>
-        </div>
-    </div>
-
-    <script>
-        function luckyRedirect() {
-            // Список страниц твоих проектов (добавь свои реальные ссылки)
-            const projects = [
-                'https://gallerycalpe.art/#portfolio',
-                'https://gallerycalpe.art/project1', 
-                'https://gallerycalpe.art/project2'
-            ];
-            
-            // Выбираем случайную
-            const randomProject = projects[Math.floor(Math.random() * projects.length)];
-            
-            // Плавное исчезновение перед переходом
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.5s';
-            
-            setTimeout(() => {
-                window.location.href = randomProject;
-            }, 500);
-        }
-    </script>
-</body>
-</html>
