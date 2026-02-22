@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://www.instagram.com">
 
     <style>
-        /* Основной фон — глубокий черный */
         body {
             margin: 0;
             padding: 0;
@@ -17,89 +16,98 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            font-family: -apple-system, sans-serif;
+            font-family: "Georgia", serif; /* Более классический, поэтичный шрифт */
         }
 
-        /* Контейнер для анимации */
-        .content {
+        .container {
             text-align: center;
-            /* Начальное состояние: расфокус, прозрачность и уменьшение */
-            filter: blur(20px);
+            /* Замедляем общее появление до 3 секунд для драматизма */
             opacity: 0;
-            transform: scale(0.8);
-            animation: reveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            filter: blur(15px);
+            transform: scale(0.95);
+            animation: artisticReveal 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
-        /* Анимация проявления: из блюра в четкость */
-        @keyframes reveal {
+        @keyframes artisticReveal {
             0% {
-                filter: blur(20px);
                 opacity: 0;
-                transform: scale(0.8);
+                filter: blur(15px);
+                transform: scale(0.95);
+            }
+            40% {
+                opacity: 1;
+                filter: blur(5px);
+                transform: scale(1);
             }
             100% {
-                filter: blur(0);
                 opacity: 1;
+                filter: blur(0);
                 transform: scale(1);
             }
         }
 
-        /* Стилизация иконки или текста */
         .logo {
-            width: 80px;
-            height: 80px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
+            width: 120px; /* Чуть увеличил для акцента */
+            height: auto;
+            margin-bottom: 30px;
+            /* Тонкое свечение вокруг логотипа */
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
         }
 
-        .logo svg {
-            fill: white;
-            width: 40px;
-            height: 40px;
+        .phrase {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            font-style: italic;
+            letter-spacing: 2px;
+            line-height: 1.6;
+            max-width: 280px;
+            margin: 0 auto;
+            font-weight: 300;
         }
 
-        .text {
-            color: white;
-            font-size: 10px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            opacity: 0.5;
+        /* Плавное затухание всей страницы перед переходом */
+        .fade-out {
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="content">
-        <div class="logo">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    <div class="container" id="content">
+        <img src="https://raw.githubusercontent.com/gallerycalpe/site/main/assets/img/logos/logo6.png" alt="Logo" class="logo">
+        
+        <div class="phrase">
+            Прислушайтесь к шепоту камня...<br>
+            Искусство начинается здесь.
         </div>
-        <div class="text">Entering Experience</div>
     </div>
 
     <script type="text/javascript">
-        // Данные аккаунта
         var username = "gallery_design_calpe";
-        
-        // Deep Link для открытия приложения напрямую
         var appUrl = "instagram://user?username=" + username;
-        // Обычная ссылка как запасной вариант
         var webUrl = "https://www.instagram.com/" + username + "/";
 
-        // Ждем 1 секунду (время анимации), чтобы пользователь увидел перформанс
+        // 1. Ждем завершения основной анимации (3 секунды)
         setTimeout(function() {
-            // Пытаемся вызвать приложение
-            window.location.replace(appUrl);
             
-            // Если через 800мс приложение не открылось (например, его нет), 
-            // отправляем в обычную веб-версию
+            // 2. Добавляем эффект плавного исчезновения перед редиректом
+            document.getElementById('content').classList.add('fade-out');
+
+            // 3. Через 0.8 сек после начала исчезновения пробуем открыть приложение
             setTimeout(function() {
-                window.location.replace(webUrl);
+                window.location.replace(appUrl);
+                
+                // 4. Резервный переход, если приложение не открылось
+                setTimeout(function() {
+                    window.location.replace(webUrl);
+                }, 1000);
             }, 800);
-        }, 1000); 
+
+        }, 3500); // Общее время созерцания — 3.5 секунды
     </script>
 </body>
 </html>
