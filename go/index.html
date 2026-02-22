@@ -1,112 +1,46 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery & Design Calpe</title>
-    <link rel="preconnect" href="https://www.instagram.com">
+<style>
+    /* ... (предыдущие стили анимации буквы) ... */
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            font-family: "Georgia", serif; /* Более классический, поэтичный шрифт */
-        }
+    .buttons-container {
+        margin-top: 40px;
+        opacity: 0;
+        animation: fadeInButtons 1s 4s forwards; /* Появляются после анимации букв */
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
 
-        .container {
-            text-align: center;
-            /* Замедляем общее появление до 3 секунд для драматизма */
-            opacity: 0;
-            filter: blur(15px);
-            transform: scale(0.95);
-            animation: artisticReveal 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
+    .btn {
+        background: none;
+        border: 1px solid rgba(255,255,255,0.3);
+        color: white;
+        padding: 12px 25px;
+        text-transform: uppercase;
+        font-size: 10px;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+        width: 200px;
+    }
 
-        @keyframes artisticReveal {
-            0% {
-                opacity: 0;
-                filter: blur(15px);
-                transform: scale(0.95);
-            }
-            40% {
-                opacity: 1;
-                filter: blur(5px);
-                transform: scale(1);
-            }
-            100% {
-                opacity: 1;
-                filter: blur(0);
-                transform: scale(1);
-            }
-        }
+    .btn:hover {
+        background: white;
+        color: black;
+    }
 
-        .logo {
-            width: 120px; /* Чуть увеличил для акцента */
-            height: auto;
-            margin-bottom: 30px;
-            /* Тонкое свечение вокруг логотипа */
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
-        }
+    @keyframes fadeInButtons {
+        to { opacity: 1; }
+    }
+</style>
 
-        .phrase {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-            font-style: italic;
-            letter-spacing: 2px;
-            line-height: 1.6;
-            max-width: 280px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-
-        /* Плавное затухание всей страницы перед переходом */
-        .fade-out {
-            animation: fadeOut 1s forwards;
-        }
-
-        @keyframes fadeOut {
-            to { opacity: 0; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container" id="content">
-        <img src="https://gallerycalpe.art/assets/img/logos/logo6.png" alt="Logo" class="logo">
-        
-        <div class="phrase">
-            art is here
-        </div>
+<div class="container">
+    <img src="https://raw.githubusercontent.com/gallerycalpe/site/main/assets/img/logos/logo6.png" class="logo">
+    <div class="phrase">Concept & Materia</div>
+    
+    <div class="buttons-container">
+        <a href="instagram://user?username=gallery_design_calpe" class="btn">Instagram Experience</a>
+        <a href="https://gallerycalpe.art/portfolio/random" class="btn">I'm Lucky (Random Work)</a>
     </div>
-
-    <script type="text/javascript">
-        var username = "gallery_design_calpe";
-        var appUrl = "instagram://user?username=" + username;
-        var webUrl = "https://www.instagram.com/" + username + "/";
-
-        // 1. Ждем завершения основной анимации (3 секунды)
-        setTimeout(function() {
-            
-            // 2. Добавляем эффект плавного исчезновения перед редиректом
-            document.getElementById('content').classList.add('fade-out');
-
-            // 3. Через 0.8 сек после начала исчезновения пробуем открыть приложение
-            setTimeout(function() {
-                window.location.replace(appUrl);
-                
-                // 4. Резервный переход, если приложение не открылось
-                setTimeout(function() {
-                    window.location.replace(webUrl);
-                }, 1000);
-            }, 800);
-
-        }, 3500); // Общее время созерцания — 3.5 секунды
-    </script>
-</body>
-</html>
+</div>
