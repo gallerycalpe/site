@@ -54,6 +54,14 @@
             opacity: 0;
             animation: fadeInPhrase 1s 1s forwards;
         }
+        .gold {
+    color: #b58d4f !important;
+    display: inline-block;
+    /* Убираем блюр чуть раньше, чтобы золото "засияло" */
+    filter: none !important; 
+    opacity: 1 !important;
+    font-weight: 400;
+}
 
         @keyframes fadeInPhrase {
             to { opacity: 0.7; }
@@ -130,7 +138,7 @@
         
         <div class="phrase-container">
             <div class="phrase">
-                <span>Concept & Materia</span>
+                <span>Concept <span class="gold">&</span> Materia</span>
             </div>
         </div>
 
