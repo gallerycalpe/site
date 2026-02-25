@@ -13,9 +13,10 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden; /* Полностью исключаем любые сдвиги экрана */
+            overflow: hidden; /* Запрет скролла */
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             color: white;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
@@ -23,6 +24,7 @@
             width: 100%;
             padding: 20px;
             box-sizing: border-box;
+            z-index: 1;
         }
 
         .logo {
@@ -30,56 +32,66 @@
             opacity: 0;
             filter: blur(10px);
             animation: logoFade 2s 0.2s forwards;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         @keyframes logoFade {
             to { opacity: 1; filter: blur(0); }
         }
 
+        /* Контейнер фразы */
         .phrase-container {
-            height: 40px;
+            height: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
+            overflow: visible;
         }
 
         .phrase {
+            display: flex;
+            gap: 10px; /* Финальное расстояние между словами/буквами */
+            opacity: 0;
+            animation: fadeInPhrase 1s 1s forwards;
+        }
+
+        @keyframes fadeInPhrase {
+            to { opacity: 0.7; }
+        }
+
+        /* Анимация схлопывания через обертку */
+        .phrase span {
+            display: inline-block;
             font-size: 13px;
             font-weight: 200;
             text-transform: uppercase;
-            white-space: nowrap;
-            letter-spacing: 6px; /* Конечное расстояние между буквами */
-            opacity: 0;
+            letter-spacing: 4px;
             filter: blur(15px);
-            /* Растягиваем сам контейнер текста, а не интервалы */
-            transform: scaleX(4); 
-            animation: genesisGather 3s 0.8s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
-            will-change: transform, opacity, filter; /* Подсказка для Safari оптимизировать анимацию */
+            transform: scale(2.5); /* Визуальное увеличение вместо растягивания интервала */
+            animation: genesisGather 2.5s 0.8s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
         }
 
         @keyframes genesisGather {
             0% { 
-                opacity: 0; 
-                transform: scaleX(4); 
-                filter: blur(15px); 
+                filter: blur(15px);
+                transform: scale(2.5);
+                letter-spacing: 20px;
             }
             100% { 
-                opacity: 0.7; 
-                transform: scaleX(1); 
-                filter: blur(0); 
+                filter: blur(0);
+                transform: scale(1);
+                letter-spacing: 4px;
             }
         }
 
         .buttons-container {
-            margin-top: 35px;
+            margin-top: 40px;
             opacity: 0;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
             align-items: center;
-            animation: fadeInButtons 1s 2.8s forwards;
+            animation: fadeInButtons 1s 2.5s forwards;
         }
 
         .btn {
@@ -91,5 +103,57 @@
             font-size: 10px;
             letter-spacing: 2px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            width: 210px;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .btn:hover {
+            border-color: white;
+            color: white;
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-1px);
+        }
+
+        @keyframes fadeInButtons {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/gallerycalpe/site/main/assets/img/logos/logo6.png" alt="Gallery Calpe" class="logo">
+        
+        <div class="phrase-container">
+            <div class="phrase">
+                <span>Concept & Materia</span>
+            </div>
+        </div>
+
+        <div class="buttons-container">
+            <a href="https://gallerycalpe.art/assets/gallery-calpe.vcf" class="btn">Capture</a>
+            <a href="https://gallerycalpe.art/" class="btn">Web Site</a>
+            <a href="https://www.instagram.com/gallery_design_calpe/" class="btn">Instagram</a>
+            <button onclick="luckyRedirect()" class="btn">Fortune</button>
+        </div>
+    </div>
+
+    <script>
+        function luckyRedirect() {
+            const projects = ['https://gallerycalpe.art/#portfolio'];
+            const randomProject = projects[Math.floor(Math.random() * projects.length)];
+            
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.6s ease-in-out';
+            
+            setTimeout(() => {
+                window.location.href = randomProject;
+            }, 600);
+        }
+    </script>
+</body>
+</html>
