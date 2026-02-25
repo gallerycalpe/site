@@ -109,7 +109,7 @@
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
             
           
-            const vcardData = BEGIN:VCARD
+            const vcardData = `BEGIN:VCARD
 VERSION:3.0
 N;CHARSET=UTF-8:;Gallery & Design Calpe;;;
 NICKNAME;CHARSET=UTF-8:Art Gallery
@@ -127,7 +127,7 @@ URL;TYPE=facebook:https://www.facebook.com/p/Gallery-Design-Calpe-61570617475113
 URL;TYPE=instagram:https://instagram.com/gallery_design_calpe
 URL;TYPE=tiktok:https://www.tiktok.com/@gallery.design.eu
 REV:2023-03-27T10:56:19.464Z
-END:VCARD
+END:VCARD`
             
 
             if (isIOS) {
