@@ -13,7 +13,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden; /* Запрет скролла */
+            overflow: hidden; 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             color: white;
             -webkit-font-smoothing: antialiased;
@@ -50,14 +50,13 @@
 
         .phrase {
             display: flex;
-            gap: 10px; /* Финальное расстояние между словами/буквами */
+            gap: 10px; 
             opacity: 0;
             animation: fadeInPhrase 1s 1s forwards;
         }
         .gold {
     color: #b58d4f !important;
     display: inline-block;
-    /* Убираем блюр чуть раньше, чтобы золото "засияло" */
     filter: none !important; 
     opacity: 1 !important;
     font-weight: 400;
@@ -67,7 +66,6 @@
             to { opacity: 0.7; }
         }
 
-        /* Анимация схлопывания через обертку */
         .phrase span {
             display: inline-block;
             font-size: 13px;
@@ -75,7 +73,7 @@
             text-transform: uppercase;
             letter-spacing: 4px;
             filter: blur(15px);
-            transform: scale(2.5); /* Визуальное увеличение вместо растягивания интервала */
+            transform: scale(2.5); 
             animation: genesisGather 2.5s 0.8s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
         }
 
